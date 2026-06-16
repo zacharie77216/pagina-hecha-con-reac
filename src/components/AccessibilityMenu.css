@@ -1,0 +1,95 @@
+.accessibility-wrapper {
+  position: fixed;
+  top: 40px;
+  left: 20px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.acc-main-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--accent);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.acc-main-btn:hover {
+  transform: scale(1.05);
+  background-color: var(--accent-hover);
+}
+
+.acc-main-btn.active {
+  background-color: var(--text-h);
+}
+
+.accessibility-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: slideDown 0.3s ease forwards;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.acc-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid var(--border-solid);
+  background-color: var(--surface-solid);
+  color: var(--text);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.acc-btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+/* Adjust sizes for smaller screens */
+@media (max-width: 768px) {
+  .accessibility-wrapper {
+    top: auto;
+    bottom: 20px;
+    left: 20px;
+    flex-direction: column-reverse;
+  }
+  
+  .accessibility-dropdown {
+    animation: slideUp 0.3s ease forwards;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

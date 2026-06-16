@@ -7,6 +7,7 @@ import ProductList from './components/ProductList'
 import Cart from './components/Cart'
 import AdminPanel from './components/AdminPanel'
 import products from './data/products'
+import AccessibilityMenu from './components/AccessibilityMenu'
 
 export default function App() {
   const [cart, setCart] = useState([])
@@ -55,6 +56,8 @@ export default function App() {
         onAdminToggle={() => setAdminOpen((v) => !v)}
         isAdminOpen={adminOpen}
       />
+
+      <AccessibilityMenu />
 
       {adminOpen ? (
         <main className="container" style={{ marginTop: '32px' }}>
