@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root {
+  --text: #5a5a72;
+  --text-h: #ff9ebc; /* Soft pink for titles */
+  --bg: #c2ddf9; /* Soft blue background */
+  --bg-pattern: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" viewBox="0 0 100 40"><path d="M0 40 L25 10 L50 40 L75 10 L100 40 L100 0 L0 0 Z" fill="%237bc34b"/></svg>'); /* Green zigzag pattern */
+  
+  --surface: rgba(255, 255, 255, 0.4);
+  --surface-solid: rgba(255, 255, 255, 0.85);
+  --border: rgba(255, 255, 255, 0.6);
+  --border-solid: #e2e8f0;
+  
+  --accent: #ff9ebc;
+  --accent-hover: #ff7aa5;
+  --accent-bg: linear-gradient(135deg, #ffc0cb, #ffa0b4);
+  
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+
+  --font-main: 'Quicksand', system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  color: var(--text);
+  background-color: var(--bg);
+  min-height: 100vh;
+  /* Top repeating pattern */
+  background-image: var(--bg-pattern);
+  background-repeat: repeat-x;
+  background-position: top;
+  background-size: 100px 25px; /* Size of the grass-like pattern */
+  padding-top: 25px; /* Offset for the pattern */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  color: var(--text-h);
+  margin-top: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}
