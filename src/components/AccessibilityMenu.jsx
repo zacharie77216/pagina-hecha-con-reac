@@ -31,13 +31,13 @@ export default function AccessibilityMenu() {
         onClick={() => setIsOpen(!isOpen)} 
         aria-label="Opciones de accesibilidad"
       >
-        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <circle cx="12" cy="7" r="1.5" fill="currentColor" stroke="none" />
-          <path d="M6 10.5h12" />
-          <path d="M12 10.5v6" />
-          <path d="M12 16.5l-3 4" />
-          <path d="M12 16.5l3 4" />
+        <svg viewBox="0 0 100 100" width="36" height="36">
+          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="6" />
+          <circle cx="50" cy="30" r="6" fill="currentColor" />
+          <path d="M 30 45 L 50 50 L 70 45" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 50 50 L 50 70" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 50 70 L 35 85" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M 50 70 L 65 85" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
 
@@ -45,8 +45,8 @@ export default function AccessibilityMenu() {
         <div className="accessibility-dropdown">
           <button className="acc-btn" onClick={decreaseFont} aria-label="Disminuir tamaño de letra">A-</button>
           <button className="acc-btn" onClick={increaseFont} aria-label="Aumentar tamaño de letra">A+</button>
-          <button className="acc-btn" onClick={toggleDark} aria-label="Alternar modo de color">
-            {isDarkMode ? '☀️' : '🌙'}
+          <button className="acc-btn" onClick={toggleDark} aria-label="Alternar modo de color" style={{ fontSize: '20px' }}>
+            {isDarkMode ? '🌞' : '🌙'}
           </button>
         </div>
       )}

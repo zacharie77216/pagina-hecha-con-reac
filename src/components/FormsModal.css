@@ -1,0 +1,224 @@
+.forms-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.forms-modal-content {
+  /* Variables de modo claro por defecto */
+  --modal-bg: rgba(255, 255, 255, 0.95);
+  --modal-border: rgba(0, 0, 0, 0.1);
+  --text-main: #222;
+  --text-muted: #555;
+  --input-bg: rgba(0, 0, 0, 0.04);
+  --input-border: rgba(0, 0, 0, 0.15);
+  --input-text: #222;
+  --tabs-bg: rgba(0, 0, 0, 0.03);
+  --tab-hover-bg: rgba(0, 0, 0, 0.05);
+  --close-bg: rgba(0, 0, 0, 0.08);
+  --close-text: #333;
+  
+  width: 90%;
+  max-width: 450px;
+  background-color: var(--modal-bg);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 0;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  overflow: hidden;
+  border: 1px solid var(--modal-border);
+  animation: modal-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Aplicar variables oscuras cuando el body tiene la clase dark-mode */
+body.dark-mode .forms-modal-content {
+  --modal-bg: rgba(25, 25, 25, 0.85);
+  --modal-border: rgba(255, 255, 255, 0.1);
+  --text-main: #fff;
+  --text-muted: #aaa;
+  --input-bg: rgba(0, 0, 0, 0.3);
+  --input-border: rgba(255, 255, 255, 0.15);
+  --input-text: #fff;
+  --tabs-bg: rgba(0, 0, 0, 0.4);
+  --tab-hover-bg: rgba(255, 255, 255, 0.05);
+  --close-bg: rgba(255, 255, 255, 0.1);
+  --close-text: #fff;
+}
+
+@keyframes modal-pop {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.forms-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--close-bg);
+  border: none;
+  color: var(--close-text);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s;
+}
+
+.forms-modal-close:hover {
+  background: var(--nintendo-red, #e60012);
+  color: white;
+  transform: rotate(90deg);
+}
+
+.forms-tabs {
+  display: flex;
+  background: var(--tabs-bg);
+  border-bottom: 1px solid var(--modal-border);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.form-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 20px 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.form-tab:hover {
+  color: var(--text-main);
+  background: var(--tab-hover-bg);
+}
+
+.form-tab.active {
+  color: var(--nintendo-red, #e60012);
+  background: rgba(230, 0, 18, 0.05);
+}
+
+.form-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--nintendo-red, #e60012);
+  box-shadow: 0 -2px 10px rgba(230, 0, 18, 0.5);
+}
+
+.forms-body {
+  padding: 32px;
+}
+
+.form-title {
+  margin: 0 0 24px 0;
+  color: var(--text-main);
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 800;
+  transition: color 0.3s;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+}
+
+.beautiful-form input,
+.beautiful-form textarea {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text);
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.beautiful-form input:focus,
+.beautiful-form textarea:focus {
+  outline: none;
+  border-color: var(--nintendo-red, #e60012);
+  background: var(--input-bg);
+  box-shadow: 0 0 0 4px rgba(230, 0, 18, 0.15);
+}
+
+.form-error {
+  color: #e60012;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.form-error::before {
+  content: '⚠️';
+  margin-right: 6px;
+}
+
+.forms-success {
+  background: rgba(46, 204, 113, 0.1);
+  border: 1px solid #2ecc71;
+  color: #2ecc71;
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(230, 0, 18, 0.3);
+  background: var(--nintendo-red, #e60012);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.form-submit:hover {
+  box-shadow: 0 6px 20px rgba(230, 0, 18, 0.5);
+  transform: translateY(-2px);
+}

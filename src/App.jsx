@@ -6,6 +6,8 @@ import Carousel from './components/Carousel'
 import ProductList from './components/ProductList'
 import Cart from './components/Cart'
 import AdminPanel from './components/AdminPanel'
+import Footer from './components/Footer'
+import FormsModal from './components/FormsModal'
 import products from './data/products'
 import AccessibilityMenu from './components/AccessibilityMenu'
 
@@ -14,6 +16,9 @@ export default function App() {
   const [cartOpen, setCartOpen] = useState(false)
   const [productList, setProductList] = useState(products)
   const [adminOpen, setAdminOpen] = useState(false)
+  const [users, setUsers] = useState([])
+  const [formsOpen, setFormsOpen] = useState(false)
+  const [formsTab, setFormsTab] = useState('login')
 
   function addToCart(product) {
     setCart((prev) => {
@@ -55,6 +60,7 @@ export default function App() {
         onToggleCart={() => setCartOpen((v) => !v)}
         onAdminToggle={() => setAdminOpen((v) => !v)}
         isAdminOpen={adminOpen}
+        onOpenForms={(tab) => { setFormsTab(tab); setFormsOpen(true); }}
       />
 
       <AccessibilityMenu />
@@ -74,13 +80,22 @@ export default function App() {
           <Navigation />
           <Carousel />
           <main className="container">
-            <h2 className="page-title">Productos destacados</h2>
-            <ProductList products={productList} onAdd={addToCart} />
+            <section>
+              <h2 className="page-title">Productos destacados</h2>
+              <ProductList products={productList} onAdd={addToCart} />
+            </section>
           </main>
         </>
       )}
 
       <Cart open={cartOpen} items={cart} onClose={() => setCartOpen(false)} onRemove={removeFromCart} onClear={clearCart} />
+      <FormsModal 
+        open={formsOpen} 
+        initialTab={formsTab} 
+        onClose={() => setFormsOpen(false)} 
+        onRegister={(u) => setUsers((prev) => [...prev, u])} 
+      />
+      <Footer />
     </div>
   )
 }
